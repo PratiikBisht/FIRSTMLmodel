@@ -1,0 +1,112 @@
+from sklearn import datasets
+
+# Load the Iris dataset
+iris = datasets.load_iris()
+
+# Access the features (X) and target (y)
+X = iris.data
+y = iris.target
+import pandas as pd
+
+# Create a DataFrame from the features and target
+iris_df = pd.DataFrame(data=X, columns=iris.feature_names)
+iris_df['target'] = y  # Add target column if needed
+
+# Save the DataFrame as a CSV file
+iris_df.to_csv('iris.csv', index=False)
+
+import numpy as np
+dataset= pd.read_csv('iris.csv')
+dataset
+y
+
+
+# Logistic Regression - Accuracy 😶Incidently 100 % accurate 
+from sklearn.linear_model import LogisticRegression 
+logmodel= LogisticRegression()
+logmodel.fit(x_train, y_train)
+y_prod =logmodel.predict(x_test)
+y_prod
+y_test
+
+
+#evaluating the performance of a classification model 
+from sklearn.metrics import confusion_matrix 
+confusion_matrix(y_test, y_prod)
+
+
+# K Nearest Neighbor Accuracy 😶Incidently 100 % accurate
+from sklearn.neighbors import KNeighborsClassifier
+classifier_knn=KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
+classifier_knn.fit(x_train, y_train)
+y_pred= classifier_knn.predict(x_test)
+confusion_matrix(y_test, y_pred)  
+y_pred = classifier_nb.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+
+# Naive based # K Nearest Neighbor Accuracy 😶Incidently 100 % accurate
+from sklearn.naive_bayes import GaussianNB
+classifier_nb= GaussianNB()
+classifier_nb.fit(x_train, y_train)
+y_pred = classifier_nb.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+# Support Vector Machine 
+##SVC MODEL - ACCURACY REDUCED TO 😓 0.26
+from sklearn.svm import SVC
+classifier_svm_sigmoid = SVC(kernel='sigmoid')
+classifier_svm_sigmoid.fit(x_train, y_train)
+y_pred =classifier_svm_sigmoid.predict(x_test)
+###Prediction Getting worst 
+confusion_matrix(y_test, y_pred)
+
+## LINEAR MODEL -  Accuracy 😶Incidently 100 % accurate
+from sklearn.svm import SVC
+classifier_svm_linear = SVC(kernel='linear')
+classifier_svm_linear.fit(x_train, y_train)
+y_pred =classifier_svm_linear.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+##Radial Basis Function (RBF) MODEL-Good accuracy 
+from sklearn.svm import SVC
+classifier_svm_rbf = SVC(kernel='rbf')
+classifier_svm_rbf.fit(x_train, y_train)
+y_pred =classifier_svm_rbf.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+
+##POLYNOMIAL MODEL- Good accuracy 
+from sklearn.svm import SVC
+classifier_svm_poly = SVC(kernel='poly')
+classifier_svm_poly.fit(x_train, y_train)
+y_pred =classifier_svm_poly.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+##Decison tree model- Good accuracy 
+from sklearn.tree import DecisionTreeClassifier
+classifier_dt=DecisionTreeClassifier(criterion='entropy')
+classifier_dt.fit(x_train,y_train)
+y_pred= classifier_dt.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+##RF MODEL -ACCURACY REDUCED TO 🙄 .93
+from sklearn.ensemble import RandomForestClassifier
+classifier_rf=RandomForestClassifier(n_estimators=3 ,criterion='entropy')
+classifier_rf.fit(x_train,y_train)
+y_pred= classifier_rf.predict(x_test)
+confusion_matrix(y_test, y_pred)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
